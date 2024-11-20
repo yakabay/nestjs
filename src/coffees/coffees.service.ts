@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Coffee } from './coffee.entity';
+import { Coffee } from './entities/coffee.entity';
 
 @Injectable()
 export class CoffeesService {
@@ -20,7 +20,7 @@ export class CoffeesService {
     return this.coffees.find((item) => item.id === +id);
   }
 
-  create(createCoffeeDto: Coffee) {
+  create(createCoffeeDto) {
     this.coffees.push(createCoffeeDto);
   }
 
