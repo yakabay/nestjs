@@ -16,15 +16,16 @@ export class CoffeesService {
     return this.coffees;
   }
 
-  findOne(id: string) {
-    return this.coffees.find((item) => item.id === +id);
+  findOne(id: number) {
+    return this.coffees.find((item) => item.id === id);
   }
 
   create(createCoffeeDto) {
     this.coffees.push(createCoffeeDto);
+    return createCoffeeDto;
   }
 
-  update(id: string, updateCoffeeDto: any) {
+  update(id: number, updateCoffeeDto: any) {
     const existingCoffee = this.findOne(id);
     if (existingCoffee) {
       // update the existing entity

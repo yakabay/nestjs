@@ -2,7 +2,7 @@ import {
   Body,
   Controller,
   Delete,
-  Get,
+  Get, HttpCode,
   NotFoundException,
   Param,
   Patch,
@@ -24,7 +24,7 @@ export class CoffeesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id) {
+  findOne(@Param('id') id: number) {
     const coffee = this.coffeesService.findOne(id);
     if (!coffee) {
       throw new NotFoundException(`Coffee #${id} not found`);
@@ -38,7 +38,7 @@ export class CoffeesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto) {
+  update(@Param('id') id: number, @Body() updateCoffeeDto: UpdateCoffeeDto) {
     return this.coffeesService.update(id, updateCoffeeDto);
   }
 
